@@ -23,7 +23,7 @@ fun main() {
         altura = respostas[3].toString()
     )
 
-    val nomeArquivo = "${usuario.nome}.txt"
+    val nomeArquivo = "cadastrados/${usuario.nome}.txt"
     val conteudo = "${usuario.nome}\n${usuario.email}\n${usuario.idade}\n${usuario.altura}"
 
     File(nomeArquivo).writeText(conteudo)
