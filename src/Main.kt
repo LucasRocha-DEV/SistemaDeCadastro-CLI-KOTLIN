@@ -21,7 +21,7 @@ fun main() {
         when (escolha) {
             1 -> cadastrarUsuario()
             2 -> listarUsuarios()
-            3 -> println("Opção 3 selecionada")
+            3 -> println(adicionarPergunta())
             4 -> println("Opção 4 selecionada")
             5 -> println("Opção 5 selecionada")
             else -> println("Escolha inválida")
@@ -61,4 +61,12 @@ fun listarUsuarios() {
         val nome = arquivo.nameWithoutExtension
         println("${index + 1} - $nome")
     }
+}
+
+fun adicionarPergunta() {
+    println("Digite a nova pergunta:")
+    val pergunta = readLine() ?: ""
+
+    val arquivo = File("formulario.txt")
+    arquivo.appendText("\n$pergunta")
 }
