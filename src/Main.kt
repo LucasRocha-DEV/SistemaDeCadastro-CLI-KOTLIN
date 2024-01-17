@@ -7,6 +7,28 @@ data class Usuario(
     var altura: String
 )
 fun main() {
+    while (true) {
+        println("Menu Principal:")
+        println("1 - Cadastrar o usuário")
+        println("2 - Listar todos usuários cadastrados")
+        println("3 - Cadastrar nova pergunta no formulário")
+        println("4 - Deletar pergunta do formulário")
+        println("5 - Pesquisar usuário por nome ou idade ou email")
+        println("Escolha uma opção:")
+
+        val escolha = readLine()?.toInt()
+
+        when (escolha) {
+            1 -> cadastrarUsuario()
+            2 -> listarUsuarios()
+            3 -> println("Opção 3 selecionada")
+            4 -> println("Opção 4 selecionada")
+            5 -> println("Opção 5 selecionada")
+            else -> println("Escolha inválida")
+        }
+    }
+}
+fun cadastrarUsuario() {
     val arquivo = File("formulario.txt")
     val respostas = mutableListOf<String>()
 
@@ -29,4 +51,14 @@ fun main() {
     File(nomeArquivo).writeText(conteudo)
 
     println("Informações do usuario salvas em $nomeArquivo")
+}
+
+fun listarUsuarios() {
+    val diretorio = File("cadastrados")
+    val arquivos = diretorio.listFiles()
+
+    arquivos?.forEachIndexed() { index, arquivo ->
+        val nome = arquivo.nameWithoutExtension
+        println("${index + 1} - $nome")
+    }
 }
